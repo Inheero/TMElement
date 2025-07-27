@@ -3,6 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/TechElements.iml" filepath="$PROJECT_DIR$/TechElements.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/TechElements.api.iml" filepath="$PROJECT_DIR$/.idea/modules/TechElements.api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/TechElements.main.iml" filepath="$PROJECT_DIR$/.idea/modules/TechElements.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/TechElements.test.iml" filepath="$PROJECT_DIR$/.idea/modules/TechElements.test.iml" />
     </modules>
   </component>
 </project>
