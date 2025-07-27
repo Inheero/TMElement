@@ -42,8 +42,7 @@ public class TMElementCore {
     public void postInit(FMLPostInitializationEvent event) {
         proxy.postInit(event);
     }
-
-
+    //sosal?  git config --global user.email "you@example.com"
 }
 
 
