@@ -1,11 +1,14 @@
 package com.tmelement;
 
+import com.tmelement.primaltools.ItemPrimalAxe;
+import com.tmelement.primaltools.ItemPrimalPickaxe;
 import com.tmelement.proxy.CommonProxy;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
@@ -29,9 +32,22 @@ public class TMElementCore {
     @SidedProxy(clientSide = "com.tmelement.proxy.ClientProxy", serverSide = "com.tmelement.proxy.CommonProxy")
     public static CommonProxy proxy;
 
+    public static Item customPrimalAxe;
+    public static Item customPrimalPickaxe;
+
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event) {
         proxy.preInit(event);
+        customPrimalAxe = new ItemPrimalAxe(Item.ToolMaterial.WOOD)
+                .setUnlocalizedName("customPrimalAxe")
+                .setTextureName("yourmodid:custom_primal_axe")
+                .setCreativeTab(TMElementCore.tab);
+        GameRegistry.registerItem(customPrimalAxe, "customWoodenAxe");
+        customPrimalPickaxe = new ItemPrimalPickaxe(Item.ToolMaterial.WOOD)
+                .setUnlocalizedName("customWoodenPickaxe")
+                .setTextureName("yourmodid:custom_wooden_pickaxe")
+                .setCreativeTab(TMElementCore.tab);  // Добавляем в ваш креатив-таб
+        GameRegistry.registerItem(customPrimalPickaxe, "customWoodenPickaxe");
     }
 
     @Mod.EventHandler
