@@ -1,1 +1,4 @@
 message.tmelements.cant_break_wood=§cYou cannot break wood with bare hands! Use an axe.
+
+infinityitems.tooltips.nofill= You don't have the right to take the liquid!
+infinityitems.tooltips.dofill= You have no right to spill the liquid!

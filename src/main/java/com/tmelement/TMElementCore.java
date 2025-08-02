@@ -8,6 +8,9 @@ import com.tmelement.primaltools.ItemPrimalAxe;
 import com.tmelement.primaltools.ItemPrimalPickaxe;
 import com.tmelement.primaltools.ItemPrimalSword;
 import com.tmelement.proxy.CommonProxy;
+import com.tmelement.thaumcraftintegration.aspects.CustomAspectNubes;
+import com.tmelement.thaumcraftintegration.aspects.CustomAspectScarabaeus;
+import com.tmelement.thaumcraftintegration.aspects.CustomAspectsSolstitium;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
@@ -46,6 +49,9 @@ public class TMElementCore {
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event) {
         proxy.preInit(event);
+        CustomAspectNubes.init();
+        CustomAspectScarabaeus.init();
+        CustomAspectsSolstitium.init();
         customPrimalAxe = new ItemPrimalAxe(Item.ToolMaterial.WOOD)
                 .setUnlocalizedName("customPrimalAxe")
                 .setTextureName("yourmodid:custom_primal_axe")

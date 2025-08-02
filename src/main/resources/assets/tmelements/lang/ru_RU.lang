@@ -1,1 +1,4 @@
 message.tmelements.cant_break_wood=§cВы не можете ломать дерево руками! Используйте топор.
+
+infinityitems.tooltips.nofill= У вас нет права набрать жидкость !
+infinityitems.tooltips.dofill= У вас нет права разлить жидкость !
