@@ -21,4 +21,8 @@ public class CommonProxy {
     public void postInit(FMLPostInitializationEvent event) {
     }
 
+    public void registerRenderers() {
+        // Пустая реализация для серверной стороны
+    }
+
 }

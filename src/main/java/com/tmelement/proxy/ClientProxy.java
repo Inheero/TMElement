@@ -1,6 +1,8 @@
 package com.tmelement.proxy;
 
+import com.tmelement.biomes.BambooRenderer;
 import cpw.mods.fml.client.registry.ClientRegistry;
+import cpw.mods.fml.client.registry.RenderingRegistry;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
@@ -13,10 +15,19 @@ import net.minecraftforge.client.MinecraftForgeClient;
 
 public class ClientProxy extends CommonProxy {
 
+    public static int bambooRenderID;
 
     @Override
     public void preInit(FMLPreInitializationEvent event) {
         super.preInit(event);
+        this.registerRenderers();
+    }
+
+    @Override
+    public void registerRenderers() {
+        // Регистрируем кастомный рендер
+        bambooRenderID = RenderingRegistry.getNextAvailableRenderId();
+        RenderingRegistry.registerBlockHandler(new BambooRenderer());
     }
 
     @Override
@@ -30,7 +41,6 @@ public class ClientProxy extends CommonProxy {
         super.postInit(event);
     }
 
-
     public static void registerItemRenderer(Item item, IItemRenderer render) {
         MinecraftForgeClient.registerItemRenderer(item, render);
     }
@@ -42,5 +52,4 @@ public class ClientProxy extends CommonProxy {
     public static void registerTileRenderer(Class<? extends TileEntity> tile, TileEntitySpecialRenderer render) {
         ClientRegistry.bindTileEntitySpecialRenderer(tile, render);
     }
-
 }
