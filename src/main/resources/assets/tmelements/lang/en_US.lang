@@ -1,4 +1,40 @@
+#Tooltips
 message.tmelements.cant_break_wood=§cYou cannot break wood with bare hands! Use an axe.
-
 infinityitems.tooltips.nofill= You don't have the right to take the liquid!
 infinityitems.tooltips.dofill= You have no right to spill the liquid!
+
+#Tools of the primitive era
+item.customPrimalAxe.name=Primitive axe
+item.customWoodenPickaxe.name=Primitive pickaxe
+item.customPrimalSword.name=Primitive dagger
+item.primalShovel.name=Primitive shovel
+item.primalHoe.name=Primitive hoe
+
+#Mana Stones
+item.mymodid.mana_giver.by_spider.name=Shard of the Spider's Soul
+item.mymodid.mana_giver.by_creeper.name=Shard of the Creeper's soul
+item.mymodid.mana_giver.by_cavespider.name=Shard of the Cave Spider's soul
+item.mymodid.mana_giver.by_endermen.name=Shard of the soul of the Wanderer of the Edge
+item.mymodid.mana_giver.by_ghast.name=Shard of Gast's soul
+item.mymodid.mana_giver.by_ifrite.name=Shard of Firebolt soul
+item.mymodid.mana_giver.by_magmacube.name=Shard of the Magma Cube's Soul
+item.mymodid.mana_giver.by_silverfish.name=Shard of Scaly's Soul
+item.mymodid.mana_giver.by_skelet.name=Shard of the Skeleton's Soul
+item.mymodid.mana_giver.by_slime.name=Slime Soul shard
+item.mymodid.mana_giver.by_witch.name=Shard of the Witch's soul
+item.mymodid.mana_giver.by_witcherskelet.name=Shard of the Skeleton Wither's soul
+item.mymodid.mana_giver.by_wolf.name=Shard of the Wolf's Soul
+item.mymodid.mana_giver.by_zombiepigman.name=Shard of the soul of a piggy
+item.mymodid.mana_giver.by_zombie.name=Shard of a Zombie's Soul
+
+#Fragments of ore
+item.ironParticle.name=Piece of iron
+item.null.name=Water
+
+#Aspects
+tc.aspect.nubes=Cloud
+tc.aspect.scarabeus=Insect
+tc.aspect.solstitium=Solstice
+
+#Bamboo forest
+tile.bamboo.name=Bamboo

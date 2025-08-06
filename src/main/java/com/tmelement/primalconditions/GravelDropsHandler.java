@@ -14,7 +14,7 @@ import java.util.Random;
 
 public class GravelDropsHandler {
 
-    private static final float IRON_PARTICLE_CHANCE = 0.25f; // 25% шанс
+    private static final float IRON_PARTICLE_CHANCE = 0.10f;
 
     @SubscribeEvent
     public void onGravelHarvest(BlockEvent.HarvestDropsEvent event) {

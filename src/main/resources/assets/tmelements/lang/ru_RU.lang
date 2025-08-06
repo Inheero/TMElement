@@ -1,4 +1,40 @@
-message.tmelements.cant_break_wood=§cВы не можете ломать дерево руками! Используйте топор.
-
+#Тультипы
 infinityitems.tooltips.nofill= У вас нет права набрать жидкость !
 infinityitems.tooltips.dofill= У вас нет права разлить жидкость !
+message.tmelements.cant_break_wood=§cВы не можете ломать дерево руками! Используйте топор.
+
+#Инструменты примитивной эпохи
+item.customPrimalAxe.name=Примитивный топор
+item.customWoodenPickaxe.name=Примитивная кирка
+item.customPrimalSword.name=Примитивный кинжал
+item.primalShovel.name=Примитивная лопата
+item.primalHoe.name=Примитивная мотыга
+
+#Камни маны
+item.mymodid.mana_giver.by_spider.name=Осколок души Паука
+item.mymodid.mana_giver.by_creeper.name=Осколок души Крипера
+item.mymodid.mana_giver.by_cavespider.name=Осколок души Пещерного паука
+item.mymodid.mana_giver.by_endermen.name=Осколок души Странника края
+item.mymodid.mana_giver.by_ghast.name=Осколок души Гаста
+item.mymodid.mana_giver.by_ifrite.name=Осколок души Всполоха
+item.mymodid.mana_giver.by_magmacube.name=Осколок души Куба магмы
+item.mymodid.mana_giver.by_silverfish.name=Осколок души Чешуйницы
+item.mymodid.mana_giver.by_skelet.name=Осколок души Скелета
+item.mymodid.mana_giver.by_slime.name=Осколок души Слизня
+item.mymodid.mana_giver.by_witch.name=Осколок души Ведьмы
+item.mymodid.mana_giver.by_witcherskelet.name=Осколок души Скелета Иссушителя
+item.mymodid.mana_giver.by_wolf.name=Осколок души Волка
+item.mymodid.mana_giver.by_zombiepigman.name=Осколок души Свинозомби
+item.mymodid.mana_giver.by_zombie.name=Осколок души Зомби
+
+#Обломки руды
+item.ironParticle.name=Кусочек железа
+item.null.name=Вода
+
+#Аспекты
+tc.aspect.nubes=Облако
+tc.aspect.scarabeus=Насекомое
+tc.aspect.solstitium=Солнцестояние
+
+#Бамбуковый лес
+tile.bamboo.name=Бамбук

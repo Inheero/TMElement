@@ -13,7 +13,7 @@ import java.util.Random;
 
 public class LeafDropsHandler {
 
-    private static final float STICK_DROP_CHANCE = 0.4f; // 40% шанс
+    private static final float STICK_DROP_CHANCE = 0.1f;
 
     @SubscribeEvent
     public void onLeafHarvest(BlockEvent.HarvestDropsEvent event) {
