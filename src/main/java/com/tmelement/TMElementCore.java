@@ -12,6 +12,18 @@ import com.tmelement.proxy.CommonProxy;
 import com.tmelement.thaumcraftintegration.aspects.CustomAspectNubes;
 import com.tmelement.thaumcraftintegration.aspects.CustomAspectScarabaeus;
 import com.tmelement.thaumcraftintegration.aspects.CustomAspectsSolstitium;
+import com.tmelement.thaumcraftintegration.trees.aertree.BlockAerLeaves;
+import com.tmelement.thaumcraftintegration.trees.aertree.BlockAerLog;
+import com.tmelement.thaumcraftintegration.trees.aertree.BlockAerSapling;
+import com.tmelement.thaumcraftintegration.trees.firetree.BlockFireLeaves;
+import com.tmelement.thaumcraftintegration.trees.firetree.BlockFireLog;
+import com.tmelement.thaumcraftintegration.trees.firetree.BlockFireSapling;
+import com.tmelement.thaumcraftintegration.trees.terratree.BlockTerraLeaves;
+import com.tmelement.thaumcraftintegration.trees.terratree.BlockTerraLog;
+import com.tmelement.thaumcraftintegration.trees.terratree.BlockTerraSapling;
+import com.tmelement.thaumcraftintegration.trees.watertree.BlockWaterLeaves;
+import com.tmelement.thaumcraftintegration.trees.watertree.BlockWaterLog;
+import com.tmelement.thaumcraftintegration.trees.watertree.BlockWaterSapling;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
@@ -53,7 +65,53 @@ public class TMElementCore {
     public static Item ironParticle;
     public static Block bamboo;
     public static BiomeGenBase bambooForest;
+    public static Block fireSapling;
+    public static Block fireLog;
+    public static Block fireLeaves;
+    public static Block waterSapling;
+    public static Block waterLog;
+    public static Block waterLeaves;
+    public static Block aerSapling;
+    public static Block aerLog;
+    public static Block aerLeaves;
+    public static Block terraSapling;
+    public static Block terraLog;
+    public static Block terraLeaves;
 
+
+    private void registerSubtiles() {
+        fireLog = new BlockFireLog().setCreativeTab(TMElementCore.tab);
+        fireLeaves = new BlockFireLeaves().setBlockName("customLeaves").setCreativeTab(TMElementCore.tab);
+        fireSapling = new BlockFireSapling().setBlockName("customSapling").setCreativeTab(TMElementCore.tab);
+
+        GameRegistry.registerBlock(fireLog, fireLog.getUnlocalizedName().substring(5));
+        GameRegistry.registerBlock(fireLeaves, "customLeaves");
+        GameRegistry.registerBlock(fireSapling, "customSapling");
+
+        waterLog = new BlockWaterLog().setCreativeTab(TMElementCore.tab);
+        waterLeaves = new BlockWaterLeaves().setBlockName("customLeavesWater").setCreativeTab(TMElementCore.tab);
+        waterSapling = new BlockWaterSapling().setBlockName("customSaplingWater").setCreativeTab(TMElementCore.tab);
+
+        GameRegistry.registerBlock(waterLog, waterLog.getUnlocalizedName().substring(5));
+        GameRegistry.registerBlock(waterLeaves, "customLeavesWater");
+        GameRegistry.registerBlock(waterSapling, "customSaplingWater");
+
+        aerLog = new BlockAerLog().setCreativeTab(TMElementCore.tab);
+        aerLeaves = new BlockAerLeaves().setBlockName("customLeavesAer").setCreativeTab(TMElementCore.tab);
+        aerSapling = new BlockAerSapling().setBlockName("customSaplingAer").setCreativeTab(TMElementCore.tab);
+
+        GameRegistry.registerBlock(aerLog, aerLog.getUnlocalizedName().substring(5));
+        GameRegistry.registerBlock(aerLeaves, "customLeavesAer");
+        GameRegistry.registerBlock(aerSapling, "customSaplingAer");
+
+        terraLog = new BlockTerraLog().setCreativeTab(TMElementCore.tab);
+        terraLeaves = new BlockTerraLeaves().setBlockName("customLeavesTerra").setCreativeTab(TMElementCore.tab);
+        terraSapling = new BlockTerraSapling().setBlockName("customSaplingTerra").setCreativeTab(TMElementCore.tab);
+
+        GameRegistry.registerBlock(terraLog, terraLog.getUnlocalizedName().substring(5));
+        GameRegistry.registerBlock(terraLeaves, "customLeavesTerra");
+        GameRegistry.registerBlock(terraSapling, "customSaplingTerra");
+    }
 
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event) {
@@ -95,6 +153,8 @@ public class TMElementCore {
         GameRegistry.registerBlock(bamboo, ItemBambooBlock.class, "bamboo");
         bambooForest = new BiomeBambooForest(150);
         BiomeManager.addSpawnBiome(bambooForest);
+        registerSubtiles();
+        BiomeRegistry.registerBiomes();
     }
 
     @Mod.EventHandler
@@ -107,5 +167,3 @@ public class TMElementCore {
     }
     //sosal?  git config --global user.email "you@example.com"
 }
-
-

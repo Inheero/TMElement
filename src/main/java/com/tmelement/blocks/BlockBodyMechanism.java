@@ -15,6 +15,7 @@ import java.util.List;
 
 public class BlockBodyMechanism extends Block {
     public static String[] types = new String[]{
+            "galactic_body"
     };
 
     @SideOnly(Side.CLIENT)
