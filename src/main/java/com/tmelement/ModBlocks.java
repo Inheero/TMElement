@@ -9,6 +9,7 @@ import net.minecraft.item.ItemBlock;
 public class ModBlocks {
 
     public static Block BODY_MECHANISM = new BlockBodyMechanism();
+
     public static void registerBlocks() {
         registerBlock(BODY_MECHANISM, ItemBlockBodyMechanism.class);
     }

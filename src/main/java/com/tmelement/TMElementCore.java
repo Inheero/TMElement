@@ -1,10 +1,15 @@
 package com.tmelement;
 
 import com.tmelement.biomes.BiomeBambooForest;
+import com.tmelement.blocks.BlockAlfheimRock;
 import com.tmelement.blocks.BlockBamboo;
 import com.tmelement.blocks.ItemBambooBlock;
+import com.tmelement.immersiveintegration.WandMultiblockActivator;
 import com.tmelement.items.ItemIronParticle;
+import com.tmelement.items.ItemPeltCow;
+import com.tmelement.items.ItemRope;
 import com.tmelement.primalconditions.BlockBreakHandler;
+import com.tmelement.primalconditions.DropHandler;
 import com.tmelement.primalconditions.GravelDropsHandler;
 import com.tmelement.primalconditions.LeafDropsHandler;
 import com.tmelement.primaltools.*;
@@ -77,6 +82,9 @@ public class TMElementCore {
     public static Block terraSapling;
     public static Block terraLog;
     public static Block terraLeaves;
+    public static Item peltCow;
+    public static Item defRope;
+    public static Block ALFHEIMROCK;
 
 
     private void registerSubtiles() {
@@ -154,7 +162,14 @@ public class TMElementCore {
         bambooForest = new BiomeBambooForest(150);
         BiomeManager.addSpawnBiome(bambooForest);
         registerSubtiles();
-        BiomeRegistry.registerBiomes();
+        peltCow = new ItemPeltCow();
+        GameRegistry.registerItem(peltCow, "peltCow");
+        MinecraftForge.EVENT_BUS.register(new DropHandler());
+        defRope = new ItemRope();
+        GameRegistry.registerItem(defRope, "defRope");
+        ALFHEIMROCK= new BlockAlfheimRock();
+        GameRegistry.registerBlock(ALFHEIMROCK,"alfheimRock");
+        WandMultiblockActivator.init();
     }
 
     @Mod.EventHandler

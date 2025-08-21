@@ -56,10 +56,10 @@ dependencies {
     compile files('path/to/NotEnoughItems-4411.jar')
     compile files('path/to/BetterQuesting-3.0.328.jar')
     compile files('path/to/StandardExpansion-3.0.181.jar')
-    compile files('path/to/Thaumcraft-1.7.10-4.2.3.5.jar')
+    compile files('path/to/Thaumcraft-1.7.10-4.2.3.5-deobf.jar')
     compile files ('path/to/Aether-client-daniorio.jar')
-    compile files ('path/to/TConstruct-1.7.10-1.8.8.build991.jar')
-    compile files ('path/to/Mantle-1.7.10-0.3.2b.jar')
+    compile files ('path/to/ImmersiveEngineering-0.7.7.jar')
+    compile files('libs/thaumcraft-api.jar')
 }
 tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
