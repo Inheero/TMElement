@@ -8,10 +8,7 @@ import com.tmelement.immersiveintegration.WandMultiblockActivator;
 import com.tmelement.items.ItemIronParticle;
 import com.tmelement.items.ItemPeltCow;
 import com.tmelement.items.ItemRope;
-import com.tmelement.primalconditions.BlockBreakHandler;
-import com.tmelement.primalconditions.DropHandler;
-import com.tmelement.primalconditions.GravelDropsHandler;
-import com.tmelement.primalconditions.LeafDropsHandler;
+import com.tmelement.primalconditions.*;
 import com.tmelement.primaltools.*;
 import com.tmelement.proxy.CommonProxy;
 import com.tmelement.thaumcraftintegration.aspects.CustomAspectNubes;
@@ -32,6 +29,7 @@ import com.tmelement.thaumcraftintegration.trees.watertree.BlockWaterSapling;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
+import cpw.mods.fml.common.event.FMLLoadCompleteEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -39,9 +37,20 @@ import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraftforge.common.BiomeManager;
 import net.minecraftforge.common.MinecraftForge;
+import thaumcraft.api.aspects.Aspect;
+import thaumcraft.api.aspects.AspectList;
+import thaumcraft.api.research.ResearchCategories;
+import thaumcraft.api.research.ResearchItem;
+import thaumcraft.api.research.ResearchPage;
+import thaumcraft.common.config.ConfigBlocks;
+import thaumcraft.common.config.ConfigResearch;
+
+import java.util.Arrays;
+import java.util.List;
 
 @Mod(modid = TMElementCore.MODID, version = TMElementCore.VERSION, name = TMElementCore.MODNAME)
 public class TMElementCore {
@@ -85,7 +94,6 @@ public class TMElementCore {
     public static Item peltCow;
     public static Item defRope;
     public static Block ALFHEIMROCK;
-
 
     private void registerSubtiles() {
         fireLog = new BlockFireLog().setCreativeTab(TMElementCore.tab);
@@ -170,6 +178,7 @@ public class TMElementCore {
         ALFHEIMROCK= new BlockAlfheimRock();
         GameRegistry.registerBlock(ALFHEIMROCK,"alfheimRock");
         WandMultiblockActivator.init();
+        MinecraftForge.EVENT_BUS.register(new EndPortalFrameDropHandler());
     }
 
     @Mod.EventHandler
@@ -177,8 +186,22 @@ public class TMElementCore {
     }
 
     @Mod.EventHandler
+    public void onCompleteLoad(FMLLoadCompleteEvent e) {
+        ItemStack empty = new ItemStack(ConfigBlocks.blockHole, 1, 15);
+        List<Object> list = Arrays.asList(new Object[]{(new AspectList()).add(Aspect.FIRE, 50).add(Aspect.EARTH, 50), Integer.valueOf(3), Integer.valueOf(3), Integer.valueOf(3), Arrays.asList(new ItemStack[]{new ItemStack(Blocks.nether_brick), new ItemStack(Blocks.obsidian), new ItemStack(Blocks.nether_brick), new ItemStack(Blocks.obsidian), empty, new ItemStack(Blocks.obsidian), new ItemStack(Blocks.nether_brick), new ItemStack(Blocks.obsidian), new ItemStack(Blocks.nether_brick), new ItemStack(Blocks.nether_brick), new ItemStack(Blocks.obsidian), new ItemStack(Blocks.nether_brick), new ItemStack(Blocks.obsidian), new ItemStack(Blocks.lava), new ItemStack(Blocks.iron_bars), new ItemStack(Blocks.nether_brick), new ItemStack(Blocks.obsidian), new ItemStack(Blocks.nether_brick), new ItemStack(Blocks.nether_brick), new ItemStack(Blocks.obsidian), new ItemStack(Blocks.nether_brick), new ItemStack(Blocks.obsidian), new ItemStack(Blocks.obsidian), new ItemStack(Blocks.obsidian), new ItemStack(Blocks.nether_brick), new ItemStack(Blocks.obsidian), new ItemStack(Blocks.nether_brick)})});
+        ConfigResearch.recipes.put("InfernalFurnace", list);
+        ResearchItem r = ResearchCategories.getResearch("INFERNALFURNACE");
+        if (r != null) {
+            ResearchPage[] pages = r.getPages();
+            pages[1] = new ResearchPage(list);
+            r.setPages(pages);
+        }
+    }
+
+    @Mod.EventHandler
     public void postInit(FMLPostInitializationEvent event) {
         proxy.postInit(event);
+        Blocks.end_portal_frame.setHardness(50F).setResistance(2000F);
     }
     //sosal?  git config --global user.email "you@example.com"
 }

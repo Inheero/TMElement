@@ -11,4 +11,3 @@ public class ItemAethers extends Item {
         setMaxStackSize(16);
     }
 }
-

@@ -2,8 +2,7 @@ package com.tmelement;
 
 import com.tmelement.botaniaintegration.ManaGiverItem;
 import com.tmelement.fluids.ItemWoodBucket;
-import com.tmelement.items.ItemAethers;
-import com.tmelement.items.ItemSeeds;
+import com.tmelement.items.*;
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
@@ -14,6 +13,9 @@ public class ModItems {
     public static final Item MA_MANAGIVER= new ManaGiverItem();
     public static final Item MA_INGOTS= new ItemAethers();
     public static final Item TM_SEEDS = new ItemSeeds();
+    public static final Item TM_AETHERACTIVATOR = new ItemAetherActivator();
+    public static final Item TM_TWILIGHTACTIVATOR = new ItemTwilightActivator();
+    public static final Item TM_SOAKED = new ItemSoakedIngots();
 
     public static void registerItems() {
         registerItem(TM_WOOD);
@@ -21,6 +23,9 @@ public class ModItems {
         registerItem( MA_INGOTS);
         MinecraftForge.EVENT_BUS.register(MA_MANAGIVER);
         registerItem(TM_SEEDS);
+        registerItem(TM_AETHERACTIVATOR);
+        registerItem(TM_TWILIGHTACTIVATOR);
+        registerItem(TM_SOAKED);
     }
 
     public static void registerItem(Item item) {

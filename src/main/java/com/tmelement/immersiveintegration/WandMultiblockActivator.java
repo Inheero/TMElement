@@ -18,9 +18,13 @@ public class WandMultiblockActivator {
 
     private static final Map<String, AspectList> MULTIBLOCK_COSTS = new HashMap<String, AspectList>();
     static {
-        MULTIBLOCK_COSTS.put("IE:CokeOven",       new AspectList().add(Aspect.FIRE, 10).add(Aspect.ORDER, 5));
-        MULTIBLOCK_COSTS.put("IE:BlastFurnace",   new AspectList().add(Aspect.FIRE, 25).add(Aspect.ORDER, 10));
-        MULTIBLOCK_COSTS.put("IE:Crusher",        new AspectList().add(Aspect.ENTROPY, 40).add(Aspect.ORDER, 20));
+        MULTIBLOCK_COSTS.put("IE:CokeOven",       new AspectList().add(Aspect.FIRE, 10).add(Aspect.ORDER, 10).add(Aspect.EARTH, 10).add(Aspect.WATER, 10).add(Aspect.AIR, 10).add(Aspect.ENTROPY, 10));
+        MULTIBLOCK_COSTS.put("IE:BlastFurnace",   new AspectList().add(Aspect.FIRE, 10).add(Aspect.ORDER, 10).add(Aspect.EARTH, 10).add(Aspect.WATER, 10).add(Aspect.AIR, 10).add(Aspect.ENTROPY, 10));
+        MULTIBLOCK_COSTS.put("IE:Crusher",        new AspectList().add(Aspect.FIRE, 40).add(Aspect.ORDER, 40).add(Aspect.EARTH, 40).add(Aspect.WATER, 40).add(Aspect.AIR, 40).add(Aspect.ENTROPY, 40));
+        MULTIBLOCK_COSTS.put("IE:ArcFurnace",     new AspectList().add(Aspect.FIRE, 80).add(Aspect.ORDER, 80).add(Aspect.EARTH, 80).add(Aspect.WATER, 80).add(Aspect.AIR, 80).add(Aspect.ENTROPY, 80));
+        MULTIBLOCK_COSTS.put("IE:Excavator",      new AspectList().add(Aspect.FIRE, 40).add(Aspect.ORDER, 40).add(Aspect.EARTH, 40).add(Aspect.WATER, 40).add(Aspect.AIR, 40).add(Aspect.ENTROPY, 40));
+        MULTIBLOCK_COSTS.put("IE:BucketWheel",    new AspectList().add(Aspect.FIRE, 40).add(Aspect.ORDER, 40).add(Aspect.EARTH, 40).add(Aspect.WATER, 40).add(Aspect.AIR, 40).add(Aspect.ENTROPY, 40));
+        MULTIBLOCK_COSTS.put("IE:Silo",           new AspectList().add(Aspect.FIRE, 60).add(Aspect.ORDER, 60).add(Aspect.EARTH, 60).add(Aspect.WATER, 60).add(Aspect.AIR, 60).add(Aspect.ENTROPY, 60));
         MULTIBLOCK_COSTS.put("IE:DieselGenerator",new AspectList().add(Aspect.FIRE, 100).add(Aspect.ENERGY, 50).add(Aspect.ORDER, 50));
 
     }
