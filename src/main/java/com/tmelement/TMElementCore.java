@@ -1,13 +1,12 @@
 package com.tmelement;
 
 import com.tmelement.biomes.BiomeBambooForest;
-import com.tmelement.blocks.BlockAlfheimRock;
-import com.tmelement.blocks.BlockBamboo;
-import com.tmelement.blocks.ItemBambooBlock;
+import com.tmelement.blocks.*;
 import com.tmelement.immersiveintegration.WandMultiblockActivator;
 import com.tmelement.items.ItemIronParticle;
 import com.tmelement.items.ItemPeltCow;
 import com.tmelement.items.ItemRope;
+import com.tmelement.ores.*;
 import com.tmelement.primalconditions.*;
 import com.tmelement.primaltools.*;
 import com.tmelement.proxy.CommonProxy;
@@ -26,6 +25,9 @@ import com.tmelement.thaumcraftintegration.trees.terratree.BlockTerraSapling;
 import com.tmelement.thaumcraftintegration.trees.watertree.BlockWaterLeaves;
 import com.tmelement.thaumcraftintegration.trees.watertree.BlockWaterLog;
 import com.tmelement.thaumcraftintegration.trees.watertree.BlockWaterSapling;
+import com.tmelement.twilightintegration.LampBlockChanger;
+import com.tmelement.vanilla.WorldGenCastle;
+import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
@@ -33,6 +35,7 @@ import cpw.mods.fml.common.event.FMLLoadCompleteEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.registry.GameRegistry;
+import cpw.mods.fml.relauncher.ReflectionHelper;
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Blocks;
@@ -48,9 +51,15 @@ import thaumcraft.api.research.ResearchItem;
 import thaumcraft.api.research.ResearchPage;
 import thaumcraft.common.config.ConfigBlocks;
 import thaumcraft.common.config.ConfigResearch;
+import twilightforest.TFTreasure;
+import twilightforest.TFTreasureItem;
+import twilightforest.TFTreasureTable;
+import twilightforest.item.TFItems;
 
 import java.util.Arrays;
 import java.util.List;
+
+import static twilightforest.block.BlockTFFirefly.rand;
 
 @Mod(modid = TMElementCore.MODID, version = TMElementCore.VERSION, name = TMElementCore.MODNAME)
 public class TMElementCore {
@@ -94,6 +103,22 @@ public class TMElementCore {
     public static Item peltCow;
     public static Item defRope;
     public static Block ALFHEIMROCK;
+    public static Block SCORECHEDLIFESTONE;
+    public static Block SCORECHEDLIFEWOOD;
+    public static Block alfheim_slab;
+    public static Block alfheim_slab_double;
+    public static Block rareOre;
+    public static Block tungustenOre;
+    public static Block lithiumOre;
+    public static Block titanOre;
+    public static Block vanadiumOre;
+    public static Block berkeliumOre;
+    public static Block californiumOre;
+    public static Block einsteiniumOre;
+    public static Block neptuniumOre;
+    public static Block thoriumOre;
+    public static Block customPlanks;
+
 
     private void registerSubtiles() {
         fireLog = new BlockFireLog().setCreativeTab(TMElementCore.tab);
@@ -127,6 +152,9 @@ public class TMElementCore {
         GameRegistry.registerBlock(terraLog, terraLog.getUnlocalizedName().substring(5));
         GameRegistry.registerBlock(terraLeaves, "customLeavesTerra");
         GameRegistry.registerBlock(terraSapling, "customSaplingTerra");
+
+        customPlanks = new BlockCustomPlanks();
+        GameRegistry.registerBlock(customPlanks, ItemCustomPlanks.class, "custom_planks");
     }
 
     @Mod.EventHandler
@@ -179,10 +207,42 @@ public class TMElementCore {
         GameRegistry.registerBlock(ALFHEIMROCK,"alfheimRock");
         WandMultiblockActivator.init();
         MinecraftForge.EVENT_BUS.register(new EndPortalFrameDropHandler());
+        SCORECHEDLIFESTONE= new BlockScorchedLifstone();
+        GameRegistry.registerBlock(SCORECHEDLIFESTONE,"BlockScorchedLifstone");
+        FMLCommonHandler.instance().bus().register(new LampBlockChanger());
+        net.minecraftforge.common.MinecraftForge.EVENT_BUS.register(new LampBlockChanger());
+        SCORECHEDLIFEWOOD=new BlockScorchedLifeWood();
+        GameRegistry.registerBlock(SCORECHEDLIFEWOOD,"BlockScorchedLifeWood");
+        rareOre = new BlockRareOre();
+        GameRegistry.registerBlock(rareOre, "rareOre");
+        tungustenOre = new BlockTungstenOre();
+        GameRegistry.registerBlock(tungustenOre,"tungstenOre");
+        lithiumOre = new BlockLithiumOre();
+        GameRegistry.registerBlock(lithiumOre,"lithiumOre");
+        titanOre = new BlockTitanOre();
+        GameRegistry.registerBlock(titanOre,"titanOre");
+        vanadiumOre = new BlockVanadiumOre();
+        GameRegistry.registerBlock(vanadiumOre,"vanadiumOre");
+        berkeliumOre = new BlockBerkeliumOre();
+        GameRegistry.registerBlock(berkeliumOre,"berkeliumOre");
+        californiumOre = new BlockCaliforniumOre();
+        GameRegistry.registerBlock(californiumOre,"californiumOre");
+        einsteiniumOre = new BlockEinsteiniumOre();
+        GameRegistry.registerBlock(einsteiniumOre,"einsteiniumOre");
+        neptuniumOre = new BlockNeptuniumOre();
+        GameRegistry.registerBlock(neptuniumOre,"neptuniumOre");
+        thoriumOre = new BlockThoriumOre();
+        GameRegistry.registerBlock(thoriumOre,"thoriumOre");
     }
 
     @Mod.EventHandler
     public void init(FMLInitializationEvent event) {proxy.init(event);
+        GameRegistry.registerWorldGenerator(new WorldGeneratorMultiOre(), 0);
+        GameRegistry.registerWorldGenerator(new WorldGenCastle(), 0);
+        alfheim_slab = new BlockAlfheimSlab(false);
+        GameRegistry.registerBlock(alfheim_slab, "block_alfheim_slab");
+        alfheim_slab_double = new BlockAlfheimSlab(true);
+        GameRegistry.registerBlock(alfheim_slab_double, "block_alfheim_slab_double");
     }
 
     @Mod.EventHandler
@@ -202,6 +262,9 @@ public class TMElementCore {
     public void postInit(FMLPostInitializationEvent event) {
         proxy.postInit(event);
         Blocks.end_portal_frame.setHardness(50F).setResistance(2000F);
+        TFTreasureTable rare = ReflectionHelper.getPrivateValue(TFTreasure.class, TFTreasure.troll_vault, "rare");
+        List<TFTreasureItem> list = ReflectionHelper.getPrivateValue(TFTreasureTable.class, rare, "list");
+        list.removeIf(entry -> entry.getItemStack(rand).getItem() == TFItems.lampOfCinders);
     }
     //sosal?  git config --global user.email "you@example.com"
 }

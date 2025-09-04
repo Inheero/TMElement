@@ -16,6 +16,11 @@ public class ModItems {
     public static final Item TM_AETHERACTIVATOR = new ItemAetherActivator();
     public static final Item TM_TWILIGHTACTIVATOR = new ItemTwilightActivator();
     public static final Item TM_SOAKED = new ItemSoakedIngots();
+    public static final Item TM_SPLAV = new ItemSplav();
+    public static final Item TM_SPLAVINGOT = new ItemSplavingot();
+    public static final Item TM_SOLARCORE = new ItemSolarcore();
+    public static final Item TM_INGOT = new ItemIngot();
+    public static final Item TM_TECHNOMAGIC = new ItemTechnomagic();
 
     public static void registerItems() {
         registerItem(TM_WOOD);
@@ -26,6 +31,11 @@ public class ModItems {
         registerItem(TM_AETHERACTIVATOR);
         registerItem(TM_TWILIGHTACTIVATOR);
         registerItem(TM_SOAKED);
+        registerItem(TM_TECHNOMAGIC);
+        registerItem(TM_SPLAVINGOT);
+        registerItem(TM_SPLAV);
+        registerItem(TM_SOLARCORE);
+        registerItem(TM_INGOT);
     }
 
     public static void registerItem(Item item) {

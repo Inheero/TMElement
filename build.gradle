@@ -60,6 +60,7 @@ dependencies {
     compile files ('path/to/Aether-client-daniorio.jar')
     compile files ('path/to/ImmersiveEngineering-0.7.7.jar')
     compile files('libs/thaumcraft-api.jar')
+    compile files('libs/twilightforest-1.7.10-2.3.8.jar')
 }
 tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'

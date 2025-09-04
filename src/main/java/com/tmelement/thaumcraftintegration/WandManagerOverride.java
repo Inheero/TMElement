@@ -12,7 +12,6 @@ import thaumcraft.api.aspects.AspectList;
 import thaumcraft.common.items.wands.ItemWandCasting;
 import thaumcraft.common.items.wands.WandManager;
 
-
 @HooksContainer(targetClassRef = WandManager.class)
 public class WandManagerOverride {
 
